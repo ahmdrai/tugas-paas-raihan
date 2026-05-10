@@ -3,6 +3,7 @@ from models import db, Expense
 from dotenv import load_dotenv
 import os
 import time
+from datetime import datetime
 import shutil
 
 load_dotenv()
@@ -33,7 +34,10 @@ def add_expense():
     title = request.form['title']
     amount = request.form['amount']
     category = request.form['category']
-    created_at = request.form['created_at']
+    created_at = datetime.strptime(
+        request.form['created_at'],
+        '%Y-%m-%d'
+    ).date()
     expense = Expense(
         title=title,
         amount=float(amount),
@@ -76,7 +80,10 @@ def edit_expense(id):
         expense.title = request.form['title']
         expense.amount = float(request.form['amount'])
         expense.category = request.form['category']
-        expense.created_at = request.form['created_at']
+        expense.created_at = datetime.strptime(
+            request.form['created_at'],
+            '%Y-%m-%d'
+        ).date()
         db.session.commit()
         return redirect('/expenses')
     return render_template(
