@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses</title>
+</head>
+<body>
+    <h1>Expense List</h1>
+
+    <a href="/">Back</a>
+
+    <ul>
+        {% for expense in expenses %}
+        <li>
+            {{ expense.title }} -
+            Rp{{ expense.amount }} -
+            {{ expense.category }}
+
+            <form action="/expenses/delete/{{ expense.id }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
