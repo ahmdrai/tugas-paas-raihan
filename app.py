@@ -9,8 +9,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-db_url = os.getenv("DATABASE_URL")
-
+db_url = os.getenv("DATABASE_URL", "sqlite:///expenses.db")
 if db_url.startswith("mysql://"):
     db_url = db_url.replace("mysql://", "mysql+pymysql://", 1)
 
