@@ -6,20 +6,16 @@ import time
 import shutil
 
 load_dotenv()
-
 app = Flask(__name__)
 
 db_url = os.getenv("DATABASE_URL", "sqlite:///expenses.db")
 if db_url.startswith("mysql://"):
     db_url = db_url.replace("mysql://", "mysql+pymysql://", 1)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 db.init_app(app)
-
 with app.app_context():
     db.create_all()
 
@@ -37,11 +33,13 @@ def add_expense():
     title = request.form['title']
     amount = request.form['amount']
     category = request.form['category']
+    created_at = request.form['created_at']
 
     expense = Expense(
         title=title,
         amount=float(amount),
-        category=category
+        category=category,
+        created_at=created_at
     )
 
     db.session.add(expense)
