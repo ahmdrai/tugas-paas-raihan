@@ -70,6 +70,36 @@ def summary():
         "total_transactions": count
     })
 
+@app.route('/expenses/<int:id>')
+def expense_detail(id):
+
+    expense = Expense.query.get_or_404(id)
+
+    return render_template(
+        'detail.html',
+        expense=expense
+    )
+
+@app.route('/expenses/edit/<int:id>', methods=['GET', 'POST'])
+def edit_expense(id):
+
+    expense = Expense.query.get_or_404(id)
+
+    if request.method == 'POST':
+
+        expense.title = request.form['title']
+        expense.amount = float(request.form['amount'])
+        expense.category = request.form['category']
+
+        db.session.commit()
+
+        return redirect('/expenses')
+
+    return render_template(
+        'edit.html',
+        expense=expense
+    )
+
 @app.route('/health')
 def health():
     start = time.time()
