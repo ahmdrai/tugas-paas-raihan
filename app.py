@@ -34,35 +34,28 @@ def add_expense():
     amount = request.form['amount']
     category = request.form['category']
     created_at = request.form['created_at']
-
     expense = Expense(
         title=title,
         amount=float(amount),
         category=category,
         created_at=created_at
     )
-
     db.session.add(expense)
     db.session.commit()
-
     return redirect('/expenses')
 
 @app.route('/expenses/delete/<int:id>', methods=['POST'])
 def delete_expense(id):
     expense = Expense.query.get_or_404(id)
-
     db.session.delete(expense)
     db.session.commit()
-
     return redirect('/expenses')
 
 @app.route('/summary')
 def summary():
     expenses = Expense.query.all()
-
     total = sum(e.amount for e in expenses)
     count = len(expenses)
-
     return jsonify({
         "total_expense": total,
         "total_transactions": count
@@ -70,9 +63,7 @@ def summary():
 
 @app.route('/expenses/<int:id>')
 def expense_detail(id):
-
     expense = Expense.query.get_or_404(id)
-
     return render_template(
         'detail.html',
         expense=expense
@@ -80,19 +71,14 @@ def expense_detail(id):
 
 @app.route('/expenses/edit/<int:id>', methods=['GET', 'POST'])
 def edit_expense(id):
-
     expense = Expense.query.get_or_404(id)
-
     if request.method == 'POST':
-
         expense.title = request.form['title']
         expense.amount = float(request.form['amount'])
         expense.category = request.form['category']
-
+        expense.created_at = request.form['created_at']
         db.session.commit()
-
         return redirect('/expenses')
-
     return render_template(
         'edit.html',
         expense=expense
@@ -101,17 +87,13 @@ def edit_expense(id):
 @app.route('/health')
 def health():
     start = time.time()
-
     try:
         db.session.execute(db.text('SELECT 1'))
         db_status = "connected"
     except:
         db_status = "disconnected"
-
     total, used, free = shutil.disk_usage("/")
-
     response_time = round((time.time() - start) * 1000, 2)
-
     return jsonify({
         "status": "healthy",
         "database": db_status,
