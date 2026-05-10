@@ -35,7 +35,30 @@
                 {% for expense in expenses %}
                 <tr>
                     <td>{{ expense.title }}</td>
-                    <td>Rp {{ expense.amount }}</td>
+                    <td>
+                    {% if expense.category == 'Kebutuhan' %}
+                        <span class="badge bg-primary">
+                            {{ expense.category }}
+                        </span>
+
+                    {% elif expense.category == 'Keinginan' %}
+                        <span class="badge bg-warning text-dark">
+                            {{ expense.category }}
+                        </span>
+
+                    {% elif expense.category == 'Tabungan/Investasi' %}
+                        <span class="badge bg-success">
+                            {{ expense.category }}
+                        </span>
+
+                    {% elif expense.category == 'Cicilan' %}
+                        <span class="badge bg-danger">
+                            {{ expense.category }}
+                        </span>
+
+                    {% endif %}
+                    </td>
+                    
                     <td>{{ expense.category }}</td>
 
                     <td>
