@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+    <title>Aplikasi Pencatatan Pengeluaran Harian</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -12,22 +12,22 @@
 <div class="container mt-5">
 
     <div class="card shadow p-4">
-        <h1 class="mb-4 text-center">Daily Expense Tracker</h1>
+        <h1 class="mb-4 text-center">Pencatatan Pengeluaran Harian</h1>
 
         <form action="/expenses/add" method="POST">
 
             <div class="mb-3">
-                <label class="form-label">Title</label>
+                <label class="form-label">Nama Pengeluaran</label>
                 <input type="text" name="title" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Amount</label>
+                <label class="form-label">Jumlah Pengeluaran</label>
                 <input type="number" step="0.01" name="amount" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Category</label>
+                <label class="form-label">Kategori</label>
                 <select name="category" class="form-select" required>
                     <option value="">-- Select Category --</option>
                     <option value="Kebutuhan">
@@ -46,13 +46,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary w-100">
-                Add Expense
+                Tambah Pengeluaran
             </button>
 
         </form>
 
         <a href="/expenses" class="btn btn-success mt-3">
-            View Expenses
+            Lihat Daftar Pengeluaran
         </a>
 
     </div>
