@@ -1,1 +1,2 @@
+#Versi Python Yang Digunakan
 python-3.11.9
