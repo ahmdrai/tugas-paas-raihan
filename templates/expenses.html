@@ -34,7 +34,6 @@
                     <th>Nama Pengeluaran</th>
                     <th>Jumlah Pengeluaran</th>
                     <th>Kategori</th>
-                    <th>Tanggal</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -73,11 +72,6 @@
                         {{ expense.category }}
                     </span>
                 {% endif %}
-                </td>
-
-                <!-- Menampilkan tanggal pengeluaran -->
-                <td>
-                    {{ expense.created_at }}
                 </td>
 
                 <!-- Tombol aksi -->
