@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    # Judul halaman
+    <!-- Judul halaman -->
     <title>Aplikasi Pencatatan Pengeluaran Harian</title>
 
-    # Import Bootstrap CSS
+    <!-- Import Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
-# Container utama aplikasi
+<!-- Container utama aplikasi -->
 <div class="container mt-5">
     <div class="card shadow p-4">
-        # Judul aplikasi
+        <!-- Judul aplikasi -->
         <h1 class="mb-4 text-center">
             Pencatatan Pengeluaran Harian
         </h1>
-        # Form tambah pengeluaran
+        <!-- Form tambah pengeluaran -->
         <form action="/expenses/add" method="POST">
 
-            # Input nama pengeluaran
+            <!-- Input nama pengeluaran -->
             <div class="mb-3">
                 <label class="form-label">
                     Nama Pengeluaran
@@ -33,7 +33,7 @@
                        required>
             </div>
 
-            # Input jumlah pengeluaran
+            <!-- Input jumlah pengeluaran -->
             <div class="mb-3">
                 <label class="form-label">
                     Jumlah Pengeluaran
@@ -45,7 +45,7 @@
                        required>
             </div>
 
-            # Input tanggal pengeluaran
+            <!-- Input tanggal pengeluaran -->
             <div class="mb-3">
                 <label class="form-label">
                     Tanggal Pengeluaran
@@ -56,7 +56,7 @@
                        required>
             </div>
 
-            # Pilihan kategori pengeluaran
+            <!-- Pilihan kategori pengeluaran -->
             <div class="mb-3">
                 <label class="form-label">
                     Kategori
@@ -82,15 +82,15 @@
                 </select>
             </div>
 
-            # Tombol tambah pengeluaran
+            <!-- Tombol tambah pengeluaran -->
             <button type="submit"
                     class="btn btn-primary w-100">
                 Tambah Pengeluaran
             </button>
-            
+
         </form>
 
-        # Tombol daftar pengeluaran
+        <!-- Tombol daftar pengeluaran -->
         <a href="/expenses"
            class="btn btn-success mt-3">
             Lihat Daftar Pengeluaran
